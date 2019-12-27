@@ -5,7 +5,7 @@ import { MapOptions } from './constant/config';
 import initFenceCustomLayer, {
 	changeLayerDisplayData,
 } from './fence-custom-layer';
-import { LongTermActiveFence } from './constant/mock-data';
+import { LongTermActiveFence, SelectedCityFence } from './constant/mock-data';
 
 function initMap(mapEl: React.MutableRefObject<HTMLDivElement>): AMap.Map {
 	const map = new AMap.Map(mapEl.current, {
@@ -39,10 +39,15 @@ export default function Container(): JSX.Element {
 	useEffect(() => {
 		// const selectedCityMock = '浙江省';
 		const longTermActiveFence = LongTermActiveFence;
+		const selectedCityFence = SelectedCityFence;
 		axios
 			.get('https://a.amap.com/amap-ui/static/data/prov-borders.json')
 			.then(res => {
-				changeLayerDisplayData(res.data, longTermActiveFence);
+				changeLayerDisplayData(
+					res.data,
+					selectedCityFence,
+					longTermActiveFence,
+				);
 			});
 	}, []);
 

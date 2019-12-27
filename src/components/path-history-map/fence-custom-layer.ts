@@ -7,6 +7,7 @@ let canvasCtx: CanvasRenderingContext2D;
 let fenceCustomLayer: AMap.CustomLayer;
 
 let provList: Array<Prov> = [];
+let selectedCityFence: Array<[number, number]> = [];
 let longTermActiveFence: Array<[number, number]> = [];
 // let selectedProv: string;
 
@@ -68,6 +69,17 @@ function fenceCustomLayerOnRender(): void {
 	}
 	canvasCtx.restore();
 
+	// 画选中的城市
+	canvasCtx.save();
+	for (const point of selectedCityFence) {
+		const pixel = map.lngLatToContainer(new AMap.LngLat(point[0], point[1]));
+		canvasCtx.lineTo(pixel.getX(), pixel.getY());
+	}
+	canvasCtx.closePath();
+	canvasCtx.fillStyle = FenceCustomLayerOptions.selectedCityFillColor;
+	canvasCtx.fill();
+	canvasCtx.restore();
+
 	// 画长期活动范围
 	canvasCtx.save();
 	canvasCtx.beginPath();
@@ -85,9 +97,11 @@ function fenceCustomLayerOnRender(): void {
 
 export function changeLayerDisplayData(
 	provListParam: Array<Prov>,
+	selectedCityFenceParam: Array<[number, number]>,
 	longTermActiveFenceParam: Array<[number, number]>,
 ): void {
 	provList = provListParam;
+	selectedCityFence = selectedCityFenceParam;
 	longTermActiveFence = longTermActiveFenceParam;
 	fenceCustomLayer.render();
 }
