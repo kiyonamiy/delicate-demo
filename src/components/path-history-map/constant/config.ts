@@ -2,9 +2,9 @@ export const MapOptions = {
 	//设置地图的显示样式
 	style: 'amap://styles/macaron',
 	// 初识倍数
-	zoom: 12,
+	zoom: 5,
 	// 中心
-	center: new AMap.LngLat(120.15, 30.28),
+	center: new AMap.LngLat(105, 35),
 
 	ZOOM_MAX: 20,
 };
@@ -25,3 +25,5 @@ export const FenceCustomLayerOptions = {
 		return (mapZoom / MapOptions.ZOOM_MAX) * maxLineWidth;
 	},
 };
+
+export const THEME_BLUE = '#1658a3';

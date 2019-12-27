@@ -6,6 +6,12 @@
  */
 
 declare namespace AMap {
+	export class ToolBar {
+		constructor(options: { direction: boolean });
+	}
+	export class Scale {
+		constructor(options: { position: string });
+	}
 	export class CustomLayer {
 		render: () => void;
 		constructor(
