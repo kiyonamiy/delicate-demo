@@ -1,5 +1,12 @@
 import React, { useRef, useEffect } from 'react';
+import axios from 'axios';
+
 import { MapOptions } from './constant/config';
+import initFenceCustomLayer, {
+	changeLayerDisplayData,
+} from './fence-custom-layer';
+import { LongTermActiveFence } from './constant/mock-data';
+
 function initMap(mapEl: React.MutableRefObject<HTMLDivElement>): AMap.Map {
 	const map = new AMap.Map(mapEl.current, {
 		zoom: MapOptions.zoom,
@@ -20,13 +27,23 @@ function initMap(mapEl: React.MutableRefObject<HTMLDivElement>): AMap.Map {
 	return map;
 }
 
-export default function Container(props: any): JSX.Element {
+export default function Container(): JSX.Element {
 	const mapEl: React.MutableRefObject<HTMLDivElement> = useRef(
 		document.createElement('div'),
 	);
 
 	useEffect(() => {
 		const map = initMap(mapEl);
+		initFenceCustomLayer(map);
+	}, []);
+	useEffect(() => {
+		// const selectedCityMock = '浙江省';
+		const longTermActiveFence = LongTermActiveFence;
+		axios
+			.get('https://a.amap.com/amap-ui/static/data/prov-borders.json')
+			.then(res => {
+				changeLayerDisplayData(res.data, longTermActiveFence);
+			});
 	}, []);
 
 	return <div ref={mapEl} style={{ height: 700, width: '100%' }} />;
