@@ -1,3 +1,20 @@
+import { PointData } from '../interface/point';
+
+export const pathData: Array<PointData> = [
+	{ lng: 116.405289, lat: 39.904987, riskLevel: 1, size: 4, timestamp: 100 },
+	{ lng: 113.964458, lat: 38.54664, riskLevel: 1, size: 1, timestamp: 200 },
+	{ lng: 111.47836, lat: 38.135964, riskLevel: 1, size: 1, timestamp: 300 },
+	{ lng: 108.949297, lat: 37.670904, riskLevel: 2, size: 2, timestamp: 400 },
+	{ lng: 106.380111, lat: 37.149509, riskLevel: 2, size: 1, timestamp: 500 },
+	{ lng: 103.774185, lat: 36.56996, riskLevel: 2, size: 3, timestamp: 600 },
+	{ lng: 101.135432, lat: 34.930601, riskLevel: 3, size: 1, timestamp: 700 },
+	{ lng: 98.46826, lat: 34.229964, riskLevel: 3, size: 2, timestamp: 800 },
+	{ lng: 95.777529, lat: 33.466798, riskLevel: 3, size: 2, timestamp: 900 },
+	{ lng: 93.068486, lat: 32.64009, riskLevel: 4, size: 1, timestamp: 1000 },
+	{ lng: 90.34669, lat: 31.749086, riskLevel: 4, size: 2, timestamp: 1100 },
+	{ lng: 87.61792, lat: 31.793308, riskLevel: 5, size: 2, timestamp: 1200 },
+];
+
 export const LongTermActiveFence: Array<[number, number]> = [
 	[120.15, 30.28],
 	[120.2, 28.28],

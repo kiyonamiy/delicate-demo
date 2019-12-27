@@ -115,5 +115,6 @@ export default function initFenceCustomLayer(mapParam: AMap.Map): void {
 	});
 
 	fenceCustomLayer.render = fenceCustomLayerOnRender;
+
 	map.add([fenceCustomLayer]);
 }
