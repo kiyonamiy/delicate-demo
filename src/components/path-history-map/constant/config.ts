@@ -14,7 +14,7 @@ export const FenceCustomLayerOptions = {
 	provStrokeColor: 'black',
 
 	// 选择城市填充颜色
-	selectedCityFillColor: 'rgba(255, 69, 0, 0.2)',
+	selectedCityFillColor: 'rgba(33, 33, 33, 0.2)',
 
 	// 长期活动范围描边颜色
 	longTermActiveFenceStrokeColor: '#E040FB',

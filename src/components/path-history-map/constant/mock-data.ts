@@ -235,7 +235,7 @@ export const LongTermActiveFence: Array<[number, number]> = [
 // 	[120.0916, 29.8169],
 // 	[120.1135, 29.8444],
 // ];
-
+// export const SelectedCityFence: Array<[number, number]> = [];
 export const SelectedCityFence: Array<[number, number]> = [
 	[118.3447, 29.4763],
 	[118.3557, 29.4763],

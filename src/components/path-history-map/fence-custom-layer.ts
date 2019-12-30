@@ -71,6 +71,7 @@ function fenceCustomLayerOnRender(): void {
 
 	// 画选中的城市
 	canvasCtx.save();
+	canvasCtx.beginPath();
 	for (const point of selectedCityFence) {
 		const pixel = map.lngLatToContainer(new AMap.LngLat(point[0], point[1]));
 		canvasCtx.lineTo(pixel.getX(), pixel.getY());
