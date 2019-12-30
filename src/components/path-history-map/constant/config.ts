@@ -26,24 +26,32 @@ export const FenceCustomLayerOptions = {
 	},
 };
 
+export enum ArrowColor {
+	DarkGreen = '#09a024',
+	LightGreen = '#64ce94',
+	YELLOW = '#fde531',
+	ORANGE = '#f99a45',
+	RED = '#f90e1c',
+}
+
 export const PointOptions = {
 	mapLevelToColor: (level: number): string => {
 		let color = 'aaa';
 		switch (level) {
 			case 1:
-				color = '#68981a';
+				color = ArrowColor.DarkGreen;
 				break;
 			case 2:
-				color = '#64ce94';
+				color = ArrowColor.LightGreen;
 				break;
 			case 3:
-				color = '#fefc76';
+				color = ArrowColor.YELLOW;
 				break;
 			case 4:
-				color = '#f99a45';
+				color = ArrowColor.ORANGE;
 				break;
 			case 5:
-				color = '#f90e1c';
+				color = ArrowColor.RED;
 				break;
 			default:
 				break;
