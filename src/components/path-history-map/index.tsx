@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { Fragment, useRef, useEffect, useState } from 'react';
 import axios from 'axios';
 import { MapOptions } from './constant/config';
 import initFenceCustomLayer, {
@@ -6,6 +6,8 @@ import initFenceCustomLayer, {
 } from './fence-custom-layer';
 import { LongTermActiveFence, SelectedCityFence } from './constant/mock-data';
 import { initPathCustomLayer } from './path-custom-layer';
+import InfoWindowCarousel from './info-window-carousel';
+import { InfoWindowWrapper } from './style';
 
 function initMap(mapEl: React.MutableRefObject<HTMLDivElement>): AMap.Map {
 	const map = new AMap.Map(mapEl.current, {
@@ -32,10 +34,16 @@ export default function Container(): JSX.Element {
 		document.createElement('div'),
 	);
 
+	const infoWindowEl: React.MutableRefObject<HTMLDivElement> = useRef(
+		document.createElement('div'),
+	);
+
+	const [infoWindowVisible, setInfoWindowVisible] = useState(false);
+
 	useEffect(() => {
 		const map = initMap(mapEl);
 		initFenceCustomLayer(map);
-		initPathCustomLayer(map);
+		initPathCustomLayer(map, infoWindowEl, setInfoWindowVisible);
 	}, []);
 
 	useEffect(() => {
@@ -53,5 +61,12 @@ export default function Container(): JSX.Element {
 			});
 	}, []);
 
-	return <div ref={mapEl} style={{ height: 700, width: '100%' }} />;
+	return (
+		<Fragment>
+			<div ref={mapEl} style={{ height: 700, width: '100%' }} />
+			<InfoWindowWrapper ref={infoWindowEl} visible={infoWindowVisible}>
+				<InfoWindowCarousel />
+			</InfoWindowWrapper>
+		</Fragment>
+	);
 }

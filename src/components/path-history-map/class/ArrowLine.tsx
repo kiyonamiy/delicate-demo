@@ -6,7 +6,7 @@ export default class ArrowLine {
 	private fromPoint: Point;
 	private toPoint: Point;
 	private arrowLen: number; // 箭头长度
-	private color: string; // 线与箭头的颜色
+	// private color: string; // 线与箭头的颜色
 	private theta = 30; // 箭头与线的夹角
 
 	constructor(map: AMap.Map, fromPoint: Point, toPoint: Point) {
@@ -14,7 +14,7 @@ export default class ArrowLine {
 		this.fromPoint = fromPoint;
 		this.toPoint = toPoint;
 		this.arrowLen = 2 * this.map.getZoom(); // 10
-		this.color = fromPoint.getColor();
+		// this.color = fromPoint.getColor();
 	}
 
 	draw(context: CanvasRenderingContext2D): void {

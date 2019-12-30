@@ -26,4 +26,30 @@ export const FenceCustomLayerOptions = {
 	},
 };
 
+export const PointOptions = {
+	mapLevelToColor: (level: number): string => {
+		let color = 'aaa';
+		switch (level) {
+			case 1:
+				color = '#68981a';
+				break;
+			case 2:
+				color = '#64ce94';
+				break;
+			case 3:
+				color = '#fefc76';
+				break;
+			case 4:
+				color = '#f99a45';
+				break;
+			case 5:
+				color = '#f90e1c';
+				break;
+			default:
+				break;
+		}
+		return color;
+	},
+};
+
 export const THEME_BLUE = '#1658a3';

@@ -21,7 +21,8 @@ declare namespace AMap {
 	}
 
 	export class InfoWindow {
-		constructor(options: { content: string });
+		constructor(options: { content?: string });
+		setContent(element: any);
 		open: (map: Map, lnglat: LngLat) => void;
 	}
 	/**

@@ -1,29 +1,5 @@
 import { PointData } from '../interface/point';
-import { THEME_BLUE } from '../constant/config';
-
-const mapLevelToColor = (level: number): string => {
-	let color = 'aaa';
-	switch (level) {
-		case 1:
-			color = '#68981a';
-			break;
-		case 2:
-			color = '#64ce94';
-			break;
-		case 3:
-			color = '#fefc76';
-			break;
-		case 4:
-			color = '#f99a45';
-			break;
-		case 5:
-			color = '#f90e1c';
-			break;
-		default:
-			break;
-	}
-	return color;
-};
+import { THEME_BLUE, PointOptions } from '../constant/config';
 
 export default class Point {
 	private map: AMap.Map;
@@ -36,8 +12,8 @@ export default class Point {
 		this.map = map;
 		this.lngLatPos = new AMap.LngLat(data.lng, data.lat);
 		this.containerPos = this.map.lngLatToContainer(this.lngLatPos);
-		this.size = data.size;
-		this.color = mapLevelToColor(data.riskLevel);
+		this.size = data.size * this.map.getZoom();
+		this.color = PointOptions.mapLevelToColor(data.riskLevel);
 	}
 
 	draw(context: CanvasRenderingContext2D): void {
@@ -61,7 +37,7 @@ export default class Point {
 		context.arc(
 			this.containerPos.getX(),
 			this.containerPos.getY(),
-			this.size * this.map.getZoom(),
+			this.size,
 			0,
 			Math.PI * 2,
 		);
@@ -84,5 +60,9 @@ export default class Point {
 
 	getColor(): string {
 		return this.color;
+	}
+
+	getSize(): number {
+		return this.size;
 	}
 }
