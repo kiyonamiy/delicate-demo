@@ -65,4 +65,16 @@ export default class Point {
 	getSize(): number {
 		return this.size;
 	}
+
+	isInPath(context: CanvasRenderingContext2D, x: number, y: number): boolean {
+		context.beginPath();
+		context.arc(
+			this.containerPos.getX(),
+			this.containerPos.getY(),
+			this.size * this.map.getZoom(),
+			0,
+			Math.PI * 2,
+		);
+		return context.isPointInPath(x, y);
+	}
 }

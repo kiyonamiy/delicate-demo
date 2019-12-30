@@ -1,13 +1,15 @@
-import { pathData } from './constant/mock-data';
+import { routeData } from './constant/mock-data';
 import Point from './class/Point';
 import ArrowLine from './class/ArrowLine';
+import { PointData } from './interface/point';
 
 let map: AMap.Map;
 let customLayer: AMap.CustomLayer;
 let canvas: HTMLCanvasElement;
 let context: CanvasRenderingContext2D;
 
-const pointArray: Array<Point> = [];
+const pointArray: Array<Point> = []; // 单条路径上的所有点（暂时存储，每次重绘清空）
+const pointMap = new Map<number, Point>(); // 存储所有点
 
 let infoWindowEl: React.MutableRefObject<HTMLDivElement>;
 let setInfoWindowVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -28,15 +30,16 @@ function getNewCanvas(
 }
 
 /**
- * canvas图层渲染函数
+ * 绘制一条路径
+ * @param pathData 路径点集数据
  */
-function onRender(): void {
-	context.clearRect(0, 0, map.getSize().getWidth(), map.getSize().getHeight());
+function drawPath(pathData: Array<PointData>): void {
 	pointArray.length = 0; // 重绘前先清空原数组
 	// 添加轨迹点
 	for (const pointData of pathData) {
 		const point = new Point(map, pointData);
 		pointArray.push(point);
+		pointMap.set(pointData.id, point);
 	}
 
 	// 画轨迹线
@@ -50,23 +53,15 @@ function onRender(): void {
 	}
 }
 
-function isInPointPath(
-	ctx: CanvasRenderingContext2D,
-	point: Point,
-	x: number,
-	y: number,
-): boolean {
-	const containerPos = point.getContainerPos();
-	ctx.beginPath();
-	ctx.arc(
-		containerPos.getX(),
-		containerPos.getY(),
-		point.getSize(),
-		0,
-		Math.PI * 2,
-		false,
-	);
-	return ctx.isPointInPath(x, y);
+/**
+ * canvas图层渲染函数
+ */
+function onRender(): void {
+	context.clearRect(0, 0, map.getSize().getWidth(), map.getSize().getHeight());
+	pointMap.clear();
+	for (const pathData of routeData) {
+		drawPath(pathData);
+	}
 }
 
 /**
@@ -87,23 +82,11 @@ function openPointInfoWindow(map: AMap.Map, point: Point): void {
 			),
 		),
 	);
-	// const content = 'heheh';
-	// new AMap.InfoWindow({
-	// 	content,
-	// }).open(
-	// 	map,
-	// 	map.containerToLngLat(
-	// 		new AMap.Pixel(
-	// 			point.getContainerPos().getX(),
-	// 			point.getContainerPos().getY(),
-	// 		),
-	// 	),
-	// );
 }
 
 function canvasOnMouseDown(e: MouseEvent): void {
-	for (const point of pointArray) {
-		if (isInPointPath(context, point, e.offsetX, e.offsetY)) {
+	for (const point of Array.from(pointMap.values())) {
+		if (point.isInPath(context, e.offsetX, e.offsetY)) {
 			openPointInfoWindow(map, point);
 			break;
 		}
@@ -133,5 +116,4 @@ export function initPathCustomLayer(
 
 	customLayer.render = onRender;
 	map.add([customLayer]);
-	// return customLayer;
 }
