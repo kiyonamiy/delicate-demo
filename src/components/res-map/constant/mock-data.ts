@@ -6,11 +6,11 @@ const SITE_COUNT = 15;
 const STOCK_MAX = 200;
 const TO_SITE_COUNT_MAX = 3;
 
-// 120
+// 120.15
 const LNG_MIN = 119.5;
 const LNG_OFFSET = 1.5;
 
-// 30
+// 30.28
 const LAT_MIN = 30;
 const LAT_OFFSET = 0.6;
 

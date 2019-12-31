@@ -32,6 +32,8 @@
 2. 使用单向拖尾发光轨迹表示工单移动方向；
 3. 增加各个事物的鼠标悬浮泛波动画；
 
+![资源分布地图事例](https://raw.githubusercontent.com/514723273/.md-Pictures/master/资源分布地图事例.gif)
+
 ## 4. 历史路径地图
 
 [@Hedy Hu](https://github.com/Mihuuu) 合作
