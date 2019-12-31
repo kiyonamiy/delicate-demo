@@ -152,15 +152,4 @@ export default class SiteMarker {
 	getSiteStock(): number {
 		return this.site.stock;
 	}
-
-	getSiteTypeZh(): string {
-		switch (this.getSiteType()) {
-			case SiteTypeEnum.COMMON_WAREHOUSE:
-				return '普通仓库';
-			case SiteTypeEnum.CENTRAL_WAREHOUSE:
-				return '中心仓库';
-			case SiteTypeEnum.SUPERMARKET:
-				return '超市';
-		}
-	}
 }

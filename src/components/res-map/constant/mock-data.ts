@@ -1,51 +1,51 @@
-export const MockData = [
-	{
-		id: 1,
-		name: 'Kiyonami 普通仓库 1号',
-		type: 0,
-		stock: 100,
-		lat: 30.278926,
-		lng: 120.192098,
-		toSites: [
-			{
-				id: 2,
-				count: 3,
-			},
-			{
-				id: 3,
-				count: 10,
-			},
-			{
-				id: 4,
-				count: 1,
-			},
-		],
-	},
-	{
-		id: 2,
-		name: 'Kiyonami 中心仓库',
-		type: 1,
-		stock: 10,
-		lat: 30.23473,
-		lng: 120.192098,
-		toSites: [],
-	},
-	{
-		id: 3,
-		name: 'Kiyonami 超市',
-		type: 2,
-		stock: 20,
-		lat: 30.289169,
-		lng: 120.117983,
-		toSites: [],
-	},
-	{
-		id: 4,
-		name: 'Kiyonami 普通仓库 2号',
-		type: 0,
-		stock: 60,
-		lat: 30.279906,
-		lng: 120.094017,
-		toSites: [],
-	},
+import Site, { ToSiteLine } from '../interface/site';
+import SiteTypeEnum, { getSiteTypeZh } from './site-type-enum';
+
+const SITE_COUNT = 15;
+
+const STOCK_MAX = 200;
+const TO_SITE_COUNT_MAX = 3;
+
+// 120
+const LNG_MIN = 119.5;
+const LNG_OFFSET = 1.5;
+
+// 30
+const LAT_MIN = 30;
+const LAT_OFFSET = 0.6;
+
+const siteTypeEnumList: SiteTypeEnum[] = [
+	SiteTypeEnum.CENTRAL_WAREHOUSE,
+	SiteTypeEnum.COMMON_WAREHOUSE,
+	SiteTypeEnum.SUPERMARKET,
 ];
+
+const siteList: Site[] = [];
+for (let i = 0; i < SITE_COUNT; i++) {
+	const type =
+		siteTypeEnumList[Math.floor(Math.random() * siteTypeEnumList.length)];
+
+	const toSites: ToSiteLine[] = [];
+	const toSitesCount = Math.floor(Math.random() * TO_SITE_COUNT_MAX);
+	for (let j = 0; j < toSitesCount; j++) {
+		toSites.push({
+			id: Math.floor(Math.random() * SITE_COUNT),
+			count: Math.floor((Math.random() * STOCK_MAX) / 2),
+		});
+	}
+
+	const site: Site = {
+		id: i,
+		type,
+		name: `${getSiteTypeZh(type)}${i}`,
+		stock: Math.floor(Math.random() * STOCK_MAX),
+		lng: LNG_MIN + Math.random() * LNG_OFFSET,
+		lat: LAT_MIN + Math.random() * LAT_OFFSET,
+		toSites,
+	};
+	siteList.push(site);
+}
+
+console.log(siteList);
+
+export const MockData = siteList;

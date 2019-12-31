@@ -1,8 +1,8 @@
 export const MapOptions = {
 	//设置地图的显示样式
-	style: 'amap://styles/whitesmoke',
+	style: 'amap://styles/dark',
 	// 初识倍数
-	zoom: 12,
+	zoom: 10,
 	// 中心
 	center: new AMap.LngLat(120.15, 30.28),
 };
@@ -18,11 +18,9 @@ export const MoveLineOptions = {
 	// 移动点最大半径
 	moveRadius: 3,
 	// 移动点颜色
-	fillColor: 'black',
-	// fillColor: 'black',
+	fillColor: '#FFEB3B',
 	// 移动点阴影颜色
-	shadowColor: 'red',
-	// shadowColor: 'red',
+	shadowColor: '#fff',
 	// 移动点阴影大小
 	shadowBlur: 5,
 
@@ -33,7 +31,7 @@ export const MoveLineOptions = {
 	lineCountYOffset: 10,
 
 	// 限定显示路径 Zoom
-	minZoom: 10,
+	minZoom: 3,
 };
 
 export const SiteMarkerOptions = {

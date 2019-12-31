@@ -3,6 +3,7 @@ import MoveLine from './class/move-line';
 import { MoveLineOptions } from './constant/config';
 import SiteMarker from './class/site-marker';
 import Site from './interface/site';
+import { getSiteTypeZh } from './constant/site-type-enum';
 
 // map
 let map: AMap.Map;
@@ -210,7 +211,7 @@ function isInMarkerPath(
 function openMarkerInfoWindow(map: AMap.Map, marker: SiteMarker): void {
 	const content = `
   <h4>#${marker.getSiteId()} ${marker.getSiteName()}</h4>
-  <strong>类型: </strong> ${marker.getSiteTypeZh()}
+  <strong>类型: </strong> ${getSiteTypeZh(marker.getSiteType())}
   <br />
   <strong>库存: </strong> ${marker.getSiteStock()}
   <br />
