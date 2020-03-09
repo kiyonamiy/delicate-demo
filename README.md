@@ -75,7 +75,7 @@ yarn start
 
 ![daily-ledger-v000101](https://raw.githubusercontent.com/514723273/.md-Pictures/master/daily-ledger-v000101.png)
 
-## 5. 相关性力图
+## 5. 相关性力导向图
 
 > 该组件还未抽离迁移！占位！
 
