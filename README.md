@@ -74,9 +74,3 @@ yarn start
 2. 点击左上角左右箭头，可切换月份显示
 
 ![daily-ledger-v000101](https://raw.githubusercontent.com/514723273/.md-Pictures/master/daily-ledger-v000101.png)
-
-## 6. 相关性力导向图
-
-> 该组件还未抽离迁移！占位！
-
-![correlation-graph.png](https://raw.githubusercontent.com/514723273/.md-Pictures/master/correlation-graph.png)
