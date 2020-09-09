@@ -19,15 +19,7 @@ yarn
 yarn start
 ```
 
-## 1. Unity 3D 坐标变化
-
-阅读 Unity Shader 入门精要的第四章，生涩的数学理论实在没有感觉，所以使用`TypeScript + Canvas`来将理论实践。线性代数强行捡起。
-
-基本的过程是: 模型空间->世界空间->观察空间->裁剪空间->屏幕空间。跳过了其中部分的过程，通过矩阵变换完成了 3D 坐标到 2D 坐标的转换，达到游戏的肉眼 3D 效果。
-
-![u3d坐标变换](https://raw.githubusercontent.com/514723273/.md-Pictures/master/u3d坐标变换.gif)
-
-## 2. 评价等级条
+## 1. 评价等级条
 
 在实际项目中，该组件用于显示商家的等级和积分。
 
@@ -39,7 +31,7 @@ yarn start
 
 ![rate-bar](https://raw.githubusercontent.com/514723273/.md-Pictures/master/rate-bar.gif)
 
-## 3. 资源分布地图
+## 2. 资源分布地图
 
 [@Hedy Hu](https://github.com/Mihuuu) 合作
 
@@ -51,7 +43,7 @@ yarn start
 
 ![资源分布地图事例](https://raw.githubusercontent.com/514723273/.md-Pictures/master/资源分布地图事例.gif)
 
-## 4. 历史路径地图
+## 3. 历史路径地图
 
 [@Hedy Hu](https://github.com/Mihuuu) 合作
 
@@ -62,7 +54,7 @@ yarn start
 
 ![历史路径地图.png](https://raw.githubusercontent.com/514723273/.md-Pictures/master/历史路径地图.png)
 
-## [5. 事件日历组件](https://github.com/KiyonamiYu/daily-ledger-frontend)
+## [4. 事件日历组件](https://github.com/KiyonamiYu/daily-ledger-frontend)
 
 > 该项目暂停施工！有了一些其他想法！费点心思的小组件还是想展示一下的 (๑•́ωก̀๑)
 
